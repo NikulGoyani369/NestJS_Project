@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Header, Redirect } from '@nestjs/common';
+import { Controller, Get, Put, Post, Header, Redirect } from '@nestjs/common';
 
 
 @Controller('geratelist')
@@ -25,15 +25,29 @@ export class PostGeraeteController {
         {id : 10, name: "GAERSCHRANK", address: "Bautzen"},
     ];
 
-    @Post()
-    // @Header('Cache-Control', 'none')
-    create(): string {
-        return "This action adds new geraete"
+    // @Post()
+    // // @Header('Cache-Control', 'none')
+    // create(): string {
+    //     return "This action adds new geraete"
+    // }
+
+    
+
+    @Get('device')
+    GetGeraet()
+    {
+        return this.geraeteList[0];
     }
 
-    @Get()
+    @Get('devices')
     GetGeraeteList()
     {
         return this.geraeteList;
+    }
+
+    @Put()
+    UpdateList()
+    {
+        return 'OK';
     }
 }
