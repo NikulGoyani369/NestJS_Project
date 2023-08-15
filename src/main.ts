@@ -8,13 +8,14 @@ async function bootstrap() {
   const app = await NestFactory.create(PostsModule);
 
 
-  const config = new DocumentBuilder()
+  const options = new DocumentBuilder()
     .setTitle('Debag example')
     .setDescription('The Debag Geraete API description')
     .setVersion('1.0')
-    .addTag('User und Geratelist')
+    .addTag('User List')
+    .addTag('Gerate List')
     .build();
-  const document = SwaggerModule.createDocument(app, config);
+  const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
   await app.listen(3000);
 }

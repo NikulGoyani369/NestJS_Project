@@ -1,7 +1,9 @@
-import { Controller, Get, Put, Post, Header, Redirect } from '@nestjs/common';
+import { Controller, Get, Put, Post, Patch,Header, Redirect, Delete } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 
 
 @Controller('geratelist')
+@ApiTags('Gerate List')
 export class PostGeraeteController {
     geraeteList  = [ 
         {id : 1, name: "DILA5", address: "Bautzen"},
@@ -34,20 +36,45 @@ export class PostGeraeteController {
     
 
     @Get('device')
-    GetGeraet()
-    {
-        return this.geraeteList[0];
-    }
+        GetGeraet()
+        {
+            return this.geraeteList[0];
+        }
 
     @Get('devices')
-    GetGeraeteList()
-    {
-        return this.geraeteList;
-    }
+        GetGeraeteList()
+        {
+            return this.geraeteList;
+        }
 
-    @Put()
-    UpdateList()
-    {
-        return 'OK';
-    }
+    // HTTP POST method is used to create a new resource
+    @Post('createlist')
+        CreateList()
+        {
+            return 'This action adds a new device';
+        }
+
+    // HTTP PUT method is used to Update/Replace an existing resource and put does not need a body
+        @Put()
+        UpdateList()
+        {
+            return 'OK';
+        }
+
+    // HTTP PATCH method is used to Update/Modify an existing resource
+        @Patch()
+        UpdateDevice()
+        {
+            return 'Device updated';
+        }
+    
+    // HTTP DELETE method is used to Delete an existing resource 
+        @Delete()
+        DeleteDevice()
+        {
+            return 'Device Deleted';
+        }
+
+
+
 }
